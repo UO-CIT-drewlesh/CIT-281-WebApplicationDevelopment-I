@@ -1,5 +1,4 @@
 # Web Application Development I
-#### [Portfolio HOMEPAGE](https://drewlesh.github.io/)
 
 ## Project 1 – Basic JavaScript Functions
 

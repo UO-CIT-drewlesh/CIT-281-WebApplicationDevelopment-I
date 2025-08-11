@@ -19,6 +19,7 @@ This project implements a modular JavaScript library for calculating coin values
 
 ### Live Demo
 [View Webpage](https://uo-cit-drewlesh.github.io/CIT-281-WebApplicationDevelopment-I/Project3/)
+
 *Run locally by starting the Fastify server (`p3-server.js`) and navigating to `http://localhost:8080`.*
 
 ### Reflection

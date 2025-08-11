@@ -1,6 +1,6 @@
 # Project 4 – Question & Answer Module with Fastify Server
 
-This project implements a modular JavaScript library for managing a simple question-and-answer dataset. Alongside the module, it includes a Node.js server built with Fastify that exposes RESTful API endpoints to interact with the data.
+This project implements a modular JavaScript library for managing a simple question-and-answer dataset. Alongside the module, it includes a Node.js server built with Fastify that uses RESTful API endpoints to interact with the data.
 
 ### Skills Developed
 - Modular JavaScript programming with multiple exported functions  

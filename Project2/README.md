@@ -13,4 +13,4 @@ This project builds on my JavaScript fundamentals by creating functions that gen
 - JavaScript (ES6+)
 
 ### Live Demo
-https://uo-cit-drewlesh.github.io/CIT-281-WebApplicationDevelopment-I/Project2/
+[View Live Webpage](https://uo-cit-drewlesh.github.io/CIT-281-WebApplicationDevelopment-I/Project2/)

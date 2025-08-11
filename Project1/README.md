@@ -15,5 +15,8 @@ This project includes foundational JavaScript exercises aimed at strengthening m
 ## Technologies Used
 - JavaScript (ES6+)
 
+## Live Demo
+[View live webpage](https://uo-cit-drewlesh.github.io/CIS-110-FluencyWithInfoTech/Project2/)
+
 ## Reflection
 Though basic, this project was essential for reinforcing programming fundamentals and familiarizing myself with function creation and random data generation in JavaScript.

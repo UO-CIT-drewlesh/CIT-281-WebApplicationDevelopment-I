@@ -22,11 +22,9 @@ module.exports = class MonsterGame {
   }
 
   // List monsters
-  listMonsters = () => this.monsters.forEach((monster) => console.log(`Monster: ${Monster.monsterName}, 
-                                                    Minimum Life: ${Monster.minimumLife}, 
-                                                    Current Life: ${Monster.currentLife},
-                                                    Status:
-                                                    `));
+  listMonsters = () => this.monsters.forEach(monster => 
+    console.log(`Monster: ${monster.monsterName}, Minimum Life: ${monster.minimumLife}, Current Life: ${Monster.currentLife}, Status: ${monster.isAlive ? 'Alive' : 'Dead'}`)
+  );
     //console.log("You must write this method");
 
   // Create monsters from monster information
@@ -83,4 +81,5 @@ module.exports = class MonsterGame {
 // https://www.sitepoint.com/delay-sleep-pause-wait/
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+
 }

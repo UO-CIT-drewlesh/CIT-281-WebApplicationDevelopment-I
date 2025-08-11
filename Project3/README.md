@@ -20,3 +20,7 @@ This project implements a modular JavaScript library for calculating coin values
 ### Live Demo
 [View Webpage](https://uo-cit-drewlesh.github.io/CIT-281-WebApplicationDevelopment-I/Project3/)
 *Run locally by starting the Fastify server (`p3-server.js`) and navigating to `http://localhost:8080`.*
+
+### Reflection
+This project combined backend JavaScript development with frontend interaction, giving me experience with creating modular code and connecting it to a server environment. I learned how to handle HTTP routes and queries, serve static files, and design user-friendly interfaces that reflect server-side logic.
+

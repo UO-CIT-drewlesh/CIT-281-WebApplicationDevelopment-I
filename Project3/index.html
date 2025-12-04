@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CIT 281 - Project 3</title>
+</head>
+<body style="font-family:Arial; padding:2rem;">
+<h1>Project 3 - Coin Counter</h1>
+
+<div style="margin-bottom:1rem;">
+  <button onclick="showOption(1)">Option 1: 5x3, 10x2</button>
+</div>
+<div style="margin-bottom:1rem;">
+  <button onclick="showOption(2)">Option 2: 25x2, 1x7</button>
+</div>
+<div style="margin-bottom:1rem;">
+  <button onclick="showOption(3)">Option 3: Extra Credit</button>
+</div>
+
+<div id="result" style="margin-top:1rem; font-weight:bold;"></div>
+
+<script src="static-p3-modules.js"></script>
+<script>
+const coinsOption2 = [{denom:25, count:2}, {denom:1, count:7}];
+const coinsOption3 = [{denom:25, count:2}, {denom:1, count:7}]; // Extra Credit can be same or custom
+
+function showOption(option) {
+    let value;
+    switch(option) {
+        case 1:
+            value = coinCount({denom:5, count:3}, {denom:10, count:2});
+            break;
+        case 2:
+            value = coinCount(...coinsOption2);
+            break;
+        case 3:
+            value = coinCount(coinsOption3);
+            break;
+    }
+    document.getElementById('result').textContent = `Option ${option} total value: ${value}`;
+}
+</script>
+</body>
+</html>
+

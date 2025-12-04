@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project 6 - Shapes</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  input { width: 50px; margin: 0 5px; }
+  canvas { border: 1px solid #000; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h1>Shape Calculator & Drawer</h1>
+<p>Enter the sides of your shape (2 for rectangle, 3 for triangle):</p>
+<input type="number" id="side1" placeholder="Side 1">
+<input type="number" id="side2" placeholder="Side 2">
+<input type="number" id="side3" placeholder="Side 3">
+<button onclick="calculateShape()">Calculate & Draw</button>
+
+<p id="result"></p>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script src="p6.js"></script> <!-- your existing p6.js file -->
+
+<script>
+function calculateShape() {
+    const s1 = parseFloat(document.getElementById('side1').value) || 0;
+    const s2 = parseFloat(document.getElementById('side2').value) || 0;
+    const s3 = parseFloat(document.getElementById('side3').value) || 0;
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    let shape;
+    let message = "";
+
+    if(s1>0 && s2>0 && s3===0) {
+        shape = new Rectangle(s1,s2);
+        message = (s1===s2 ? "Square" : "Rectangle") + 
+                  ` with sides [${s1}, ${s2}] has perimeter ${shape.perimeter()} and area ${shape.area()}`;
+        ctx.fillStyle = "#FFAAAA";
+        ctx.fillRect(50,50, s1*20, s2*20);
+    } else if(s1>0 && s2>0 && s3>0) {
+        shape = new Triangle(s1,s2,s3);
+        message = `Triangle with sides [${s1}, ${s2}, ${s3}] has perimeter ${shape.perimeter()} and area ${shape.area().toFixed(2)}`;
+        // Draw right-angle triangle for simplicity
+        ctx.fillStyle = "#AAAFFF";
+        ctx.beginPath();
+        ctx.moveTo(50,200);
+        ctx.lineTo(50 + s1*20, 200);
+        ctx.lineTo(50, 200 - s2*20);
+        ctx.closePath();
+        ctx.fill();
+    } else if(s1>0 && s2===0 && s3===0) {
+        message = "Shape with 1 side unsupported";
+    } else if(s1===0 && s2===0 && s3===0) {
+        message = "Shape with 0 sides unsupported";
+    } else {
+        message = "Unsupported shape";
+    }
+
+    document.getElementById('result').innerText = message;
+}
+</script>
+
+</body>
+</html>

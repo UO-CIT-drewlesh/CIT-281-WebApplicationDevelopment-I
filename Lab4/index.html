@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab 4: Library Demo</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 2rem; }
+  input, button { margin: 0.25rem 0; padding: 0.25rem 0.5rem; }
+  table { border-collapse: collapse; margin-top: 1rem; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+  th { background-color: #f0f0f0; }
+</style>
+</head>
+<body>
+<h1>Lab 4: Library Demo</h1>
+<p><em>Interactive demo using Lab 4 JS code.</em></p>
+
+<h2>Add Book</h2>
+<input type="text" id="title" placeholder="Title"><br>
+<input type="text" id="author" placeholder="Author"><br>
+<input type="text" id="pubDate" placeholder="Publication Date"><br>
+<input type="text" id="isbn" placeholder="ISBN"><br>
+<button onclick="addBookUI()">Add Book</button>
+
+<h2>Delete Book</h2>
+<input type="text" id="delISBN" placeholder="ISBN to Delete"><br>
+<button onclick="deleteBookUI()">Delete Book</button>
+
+<h2>Library Books</h2>
+<div id="libraryOutput"></div>
+
+<script src="lab-04.js"></script> 
+
+<script>
+// UI functions using your existing library object
+function renderLibrary() {
+  const books = library.books;
+  if (books.length === 0) {
+    document.getElementById('libraryOutput').innerHTML = "<p>No books in library.</p>";
+    return;
+  }
+  let html = `<p>Book count: ${library.count}</p>`;
+  html += `<table><tr><th>Title</th><th>Author</th><th>Pub Date</th><th>ISBN</th></tr>`;
+  books.forEach(book => {
+    html += `<tr>
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.pubDate}</td>
+      <td>${book.isbn}</td>
+    </tr>`;
+  });
+  html += "</table>";
+  document.getElementById('libraryOutput').innerHTML = html;
+}
+
+function addBookUI() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pubDate = document.getElementById('pubDate').value;
+  const isbn = document.getElementById('isbn').value;
+
+  if (!title || !author) {
+    alert("Title and Author are required.");
+    return;
+  }
+
+  library.addBook(new Book(title, author, pubDate, isbn));
+  renderLibrary();
+
+  document.getElementById('title').value = "";
+  document.getElementById('author').value = "";
+  document.getElementById('pubDate').value = "";
+  document.getElementById('isbn').value = "";
+}
+
+function deleteBookUI() {
+  const isbn = document.getElementById('delISBN').value;
+  if (library.deleteBook(isbn)) {
+    alert(`Deleted book with ISBN: ${isbn}`);
+  } else {
+    alert(`Book with ISBN: ${isbn} not found.`);
+  }
+  renderLibrary();
+  document.getElementById('delISBN').value = "";
+}
+
+// Initial render
+renderLibrary();
+</script>
+</body>
+</html>

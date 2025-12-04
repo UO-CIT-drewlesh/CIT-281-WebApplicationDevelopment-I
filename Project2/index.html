@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIT 281 Project 2 - Drew Lesh</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:2rem; display:flex; justify-content:center;">
+  <div style="max-width:800px; width:100%; background:white; padding:2rem; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center; color:#0077cc;">CIT 281 Project 2</h1>
+
+    <!-- Random String Section -->
+    <section style="margin-top:1rem;">
+      <h2 style="color:#333;">Random String Generator</h2>
+      <button id="generate-string" style="padding:8px 12px; margin-bottom:0.5rem;">Generate Random String</button>
+      <div id="random-string" style="background:#e0e0e0; padding:1rem; border-radius:6px; font-size:1.2rem;"></div>
+    </section>
+
+    <!-- Sorted String Section -->
+    <section style="margin-top:1rem;">
+      <h2 style="color:#333;">Sorted String</h2>
+      <button id="generate-sorted" style="padding:8px 12px; margin-bottom:0.5rem;">Generate Sorted String</button>
+      <div id="sorted-string" style="background:#e0e0e0; padding:1rem; border-radius:6px; font-size:1.2rem;"></div>
+    </section>
+  </div>
+
+  <!-- JS files -->
+  <script src="p2-expressions.js"></script>
+  <script src="p2-random.js"></script>
+
+  <script>
+    // Random String
+    const randomDiv = document.getElementById('random-string');
+    const stringButton = document.getElementById('generate-string');
+
+    function updateRandomString() {
+      const str = getRandomString(10, 20); // from p2-random.js
+      randomDiv.textContent = str;
+    }
+
+    stringButton.addEventListener('click', updateRandomString);
+    updateRandomString(); // initial display
+
+    // Sorted String
+    const sortedDiv = document.getElementById('sorted-string');
+    const sortedButton = document.getElementById('generate-sorted');
+
+    function updateSortedString() {
+      const str = projectOneRandomWord(); // from p2-expressions.js
+      sortedDiv.textContent = getSortedString(str);
+    }
+
+    sortedButton.addEventListener('click', updateSortedString);
+    updateSortedString(); // initial display
+  </script>
+</body>
+</html>

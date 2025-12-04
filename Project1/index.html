@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIT 281 Project 1 - Drew Lesh</title>
+</head>
+<body style="font-family: Arial, sans-serif; background: #f4f4f4; margin:0; padding:2rem; display:flex; justify-content:center;">
+  <div style="max-width:800px; width:100%; background:white; padding:2rem; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center; color:#0077cc;">CIT 281 Project 1</h1>
+
+    <!-- Random Word Section -->
+    <section style="margin-top:1rem;">
+      <h2 style="color:#333;">Random Word Generator</h2>
+      <button id="generate-word" style="padding:8px 12px; margin-bottom:0.5rem;">Generate Random Word</button>
+      <div id="random-word" style="background:#e0e0e0; padding:1rem; border-radius:6px; font-size:1.2rem;"></div>
+    </section>
+
+    <!-- Day of the Week Section -->
+    <section style="margin-top:1rem;">
+      <h2 style="color:#333;">Day of the Week</h2>
+      <select id="day-select" style="padding:6px 10px; margin-bottom:0.5rem;">
+        <option value="">--Select a day--</option>
+      </select>
+      <div id="day-of-week" style="background:#e0e0e0; padding:1rem; border-radius:6px; font-size:1.2rem;"></div>
+    </section>
+  </div>
+
+  <!-- JS files -->
+  <script src="p1-random.js"></script>
+  <script src="p1-date.js"></script>
+
+  <script>
+    // Random Word Button
+    const wordDiv = document.getElementById('random-word');
+    const wordButton = document.getElementById('generate-word');
+
+    function updateRandomWord() {
+      // regenerate random word
+      randomWord = "";
+      for (let i=0; i<=getRandomInteger(5,25); i++) {
+        randomWord += alphabet[getRandomInteger(0, 25)];
+      }
+      wordDiv.textContent = randomWord;
+    }
+
+    wordButton.addEventListener('click', updateRandomWord);
+
+    // Initialize with first random word
+    updateRandomWord();
+
+    // Day of the Week Dropdown
+    const dayDiv = document.getElementById('day-of-week');
+    const daySelect = document.getElementById('day-select');
+
+    days.forEach((day, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = day;
+      daySelect.appendChild(option);
+    });
+
+    daySelect.addEventListener('change', () => {
+      if(daySelect.value !== "") {
+        dayDiv.textContent = days[daySelect.value];
+      } else {
+        dayDiv.textContent = "";
+      }
+    });
+
+    // Show current day by default
+    daySelect.value = indexOfDay;
+    dayDiv.textContent = days[indexOfDay];
+  </script>
+</body>
+</html>

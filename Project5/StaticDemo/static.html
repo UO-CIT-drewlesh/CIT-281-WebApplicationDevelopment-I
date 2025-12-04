@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Monster Game Demo</title>
+</head>
+<body style="font-family:sans-serif; padding:20px;">
+
+<h1>Monster Game Demo</h1>
+<div id="monster-container"></div>
+<button id="attack-btn" style="margin-top:20px; padding:10px;">Attack Monsters</button>
+
+<script>
+// Monster class
+class Monster {
+    constructor({ monsterName = "Unknown", minimumLife = 0, currentLife = 100 }) {
+        this.monsterName = monsterName;
+        this.minimumLife = minimumLife;
+        this.currentLife = currentLife;
+        this.isAlive = currentLife >= minimumLife;
+    }
+
+    randomLifeDrain(min, max) {
+        if (!this.isAlive) return;
+        const drain = Math.floor(Math.random() * (max - min + 1)) + min;
+        this.currentLife -= drain;
+        if (this.currentLife < this.minimumLife) this.isAlive = false;
+    }
+}
+
+// MonsterGame class
+class MonsterGame {
+    constructor({ monsterList = [], minimumLifeDrain = 1, maximumLifeDrain = 30 }) {
+        this.monsters = monsterList.map(m => new Monster(m));
+        this.minimumLifeDrain = minimumLifeDrain;
+        this.maximumLifeDrain = maximumLifeDrain;
+    }
+
+    listMonsters() {
+        const container = document.getElementById('monster-container');
+        container.innerHTML = '';
+        this.monsters.forEach(m => {
+            const div = document.createElement('div');
+            div.textContent = `${m.monsterName} — Life: ${m.currentLife} — ${m.isAlive ? 'Alive' : 'Dead'}`;
+            container.appendChild(div);
+        });
+    }
+
+    attackMonsters() {
+        this.monsters.forEach(m => m.randomLifeDrain(this.minimumLifeDrain, this.maximumLifeDrain));
+        this.listMonsters();
+        if (this.monsters.every(m => !m.isAlive)) {
+            alert("All monsters have died! Game over!");
+        }
+    }
+}
+
+// Game setup
+const game = new MonsterGame({
+    monsterList: [
+        { monsterName: "King Kong", minimumLife: 10, currentLife: 150 },
+        { monsterName: "Godzilla", minimumLife: 10, currentLife: 200 }
+    ],
+    minimumLifeDrain: 10,
+    maximumLifeDrain: 50
+});
+
+// Initial display
+game.listMonsters();
+
+// Button to attack
+document.getElementById('attack-btn').onclick = () => game.attackMonsters();
+
+</script>
+</body>
+</html>

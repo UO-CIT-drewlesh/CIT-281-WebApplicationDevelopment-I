@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # CIT281-Project-6
 Instructor: Lindy Stewart
 
@@ -157,4 +156,3 @@ The purpose of this project was to practice using JavaScript classes, inheritanc
 3. Run the following command:
    ```bash
    node p6.js
->>>>>>> afef7c11d7cdb091cdfe841649d1d15acac5fb72
